@@ -1,0 +1,116 @@
+{% extends 'catalog/base.html' %}
+{% block content %}
+<center><h1 class = "title">Checkout</h1></center>
+<br>
+<br>
+<div class = "container">
+<div class = "box">
+<div class = "columns">
+
+<div class = "column">
+
+
+<figure class = "image is-96x96">
+<img src = "/media/{{ product.book_image }}"/>
+</figure>
+<br><br>
+
+<p class = "is-size-5"> <strong> {{ product.book_name }} </strong> </p><br>
+<strong> Rent Duration: </strong> {{ rental }} days <br>
+<strong> Rent Breakdown</strong>
+<hr>
+<b> Daily Rent:</B> {{ product.book_price }}
+<br>
+<strong> Total Payable: </strong>
+<br>
+<b> Daily Rent x 60 days (2 months advance)</b> = {{ product.book_advance }}
+<br>
+<strong>Shipment Charges: </strong> 50/-
+<br>
+<strong>Collection Charges </strong> 50/-
+
+</div>
+<div class = "column">
+<h1 class = "title">Rental Policies:</h1>
+<hr class = "divider">
+<br>
+Once the rental is up and the book is successfully returned to KitabKuber.com, we will refund the deductible (2 months advance - Total Rent) 
+to your account immediately.
+<p>
+<br>
+<P> The book should be returned back to KitabKuber.com in the same condition as it was delivered. If any harm and damage is caused to the book, 
+KitabKuber.com has the right to not return the deductible amount. </P>
+<br>
+<p>As of now, we are only accepting Cash on Delivery as the payment mode</p>
+
+</div>
+</div>
+</div>
+<div class = "checkout-form">
+<form action = "order/" method = "post">
+{% csrf_token %}
+<div class = "field">
+<label class = "label"> Name</label>
+<div class = "control">
+<input class = "input" name = "name" type = "name" placeholder = "Enter Name">
+</div>
+</div>
+<div class="field">
+  <label class="label">Mobile Number</label>
+  <div class="control">
+    <input class="input" name="mobile" type="number" placeholder="Enter 10 Digit Mobile Number">
+  </div>
+</div>
+<div class="field">
+  <label class="label">Email</label>
+  <div class="control has-icons-left has-icons-right">
+    <input class="input is-danger" name = "email" type="email" placeholder="Enter Email" value="hello@">
+    <span class="icon is-small is-left">
+      <i class="fas fa-envelope"></i>
+    </span>
+    <span class="icon is-small is-right">
+      <i class="fas fa-exclamation-triangle"></i>
+    </span>
+  </div>
+  <p class="help is-danger">This email is invalid</p>
+</div>
+</div>
+<div class="field">
+  <label class="label">Address Line #1</label>
+  <div class="control">
+    <input class="input" name = "line1" type="Address Line #1" placeholder="Address Line #1">
+  </div>
+</div>
+<div class="field">
+  <label class="label">Address Line #2</label>
+  <div class="control">
+    <input class="input" name = "line2" type="Address Line #1" placeholder="Address Line #2">
+  </div>
+</div>
+<div class="field">
+  <label class="label">City</label>
+  <div class="control">
+    <input class="input" name = "city" type="City" placeholder="City">
+  </div>
+</div>
+<div class="field">
+  <label class="label">Pincode</label>
+  <div class="control">
+    <input class="input" name="pincode" type="number" placeholder="Pincode">
+  </div>
+</div>
+<fieldset disabled>
+<div class="field">
+  <label class="label">Rental Period</label>
+  <div class="control">
+    <input class="input disabled" name="rentalperiod" type="number" placeholder="{{ rental }}">
+  </div>
+</div>
+</fieldset>
+<br>
+<div class = "control">
+<button class = "button is-primary" type = "submit">Checkout
+</div>
+
+</form>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'catalog/base.html' %}
+{% block content %}
+<center><h1>Success! Thank you for placing an order with KitabKuber.com, your book will be delivered to you shortly</h1>
+<br>
+<div class = "box">
+<h1 class = "title"> Order Details</h1>
+<hr class = "divider">
+<br>
+<strong> Book Ordered: </strong>{{ data.book_ordered }}<br>
+<strong> Order Referene Number</strong> {{ data.reference_number }}</br>
+<strong> Rental Period </strong> {{ data.rental }}</br>
+<strong>Name:</strong> {{ data.name }}<br>
+<strong> Address:</strong> {{ data.address_line_1 }} <br> {{ data.address_line_2 }}<br>
+<strong>E-mail Address:</strong> {{ data.email }}<br>
+<strong>Mobile Number</strong> {{ data.mobile }}
+</div>
+</center>
+{% endblock %}

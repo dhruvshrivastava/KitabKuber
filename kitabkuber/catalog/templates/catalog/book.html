@@ -1,0 +1,53 @@
+{% extends "catalog/base.html" %}
+{% block content %}
+
+<div class = "container">
+<div class = "columns">
+<div class = "column is-half">
+<div class = "box">
+<figure class = "image is-1by1">
+<img src = "/media/{{ book.book_image }}" />
+</figure>
+</div>
+</div>
+<div class = "column is-half">
+<h1 class = "title"> {{ book.book_name }} </h1>
+<br>
+<h3><strong>Description:</strong> {{ book.book_description }}</h3>
+<br>
+<p class = "is-size-5"><b>Daily Rent:</b> {{ book.book_price }}</p>
+<hr class = "divider">
+<strong>Rent Breakdown:</strong>
+<br>
+<p>Total Rent: Rent Duration (in days) x Daily Rent</p>
+</p> Payable at the time of purchase: 2 months advance </p>
+<p> Deductible: Payable - Total Rent</p>
+<br>
+<strong> The deductible amount will be refunded to you once the rent duration is
+up and the book is returned back to us in proper condition. The 2 months advance acts 
+as a security deposit to ensure that our books are in proper condition. </strong>
+<br>
+<br>
+<div class = "box">
+<form action = "checkout/" method = "post">
+{% csrf_token %}
+<div class = "field">
+<label>
+<strong>Enter Rent Duration</strong><br><br>
+</label>
+<div class = "control">
+<input name = "rental" type = "text" placeholder = "(Max. 60 days)">
+</div>
+</div>
+<div class = "control">
+<button class = "button is-primary" type = "submit" value = "Rent">Rent & Proceed to Checkout 
+</div>
+</form>
+</div>
+
+
+
+</div>
+</div>
+
+{% endblock %}
