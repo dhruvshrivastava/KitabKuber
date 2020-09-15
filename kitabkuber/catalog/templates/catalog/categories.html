@@ -1,0 +1,27 @@
+{% extends 'catalog/base.html' %}
+
+
+{% block content %}
+
+{% for product in search_category %}
+<section class="section">
+    <div class="container">
+      <div class = "columns">
+      <div class = "column is-one-quarter">
+      <figure class = "image is-256x256">
+      <img src = "/media/{{ product.book_image }}"/>
+      </figure>
+      </div>
+      <div class = "column">
+      <h1 class="title"><a href = "/book/{{ product.id }}">{{ product.book_name }}</a> </h1>
+      <h2 class="subtitle">
+        {{ product.book_description }}
+        <br> Category: {{ product.book_category}}
+        <br> Rent/Day: {{ product.book_price }}
+      </h2>
+      </div>
+    </div>
+    </div>
+  </section>
+{% endfor %}
+{% endblock %}

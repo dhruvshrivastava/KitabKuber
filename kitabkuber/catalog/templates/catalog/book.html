@@ -29,22 +29,41 @@ as a security deposit to ensure that our books are in proper condition. </strong
 <br>
 <br>
 <div class = "box">
-<form action = "checkout/" method = "post">
+<form action = "rental/" method = "post">
 {% csrf_token %}
-<div class = "field">
-<label>
-<strong>Enter Rent Duration</strong><br><br>
-</label>
-<div class = "control">
-<input name = "rental" type = "text" placeholder = "(Max. 60 days)">
-</div>
-</div>
+
 <div class = "control">
 <button class = "button is-primary" type = "submit" value = "Rent">Rent & Proceed to Checkout 
 </div>
 </form>
 </div>
+</div>
+<hr>
+</div>
+<div>
+<br>
 
+<h1 class = "title"> 
+Other  {{ book.book_category }} books
+</h1>
+<br> 
+
+<div class = "columns is-multiline">
+{% for category in categories %}
+<div class = "column is-one-quarter">
+<div class = "box">
+<div class = "product">
+<figure class = "image is-128x128">
+<img src = "/media/{{ category.book_image }}" />
+</figure>
+<br><br><strong><a href = "/book/{{ category.id }}">{{ category.book_name }}</a></strong>
+<br><p>Daily Rent: {{ category.book_price }} </p>
+</div>
+</div>
+</div>
+{% endfor %}
+
+</div>
 
 
 </div>

@@ -3,6 +3,7 @@ from django.views.generic import ListView
 from catalog.models import Books, Orders
 from .forms import RentForm
 from django.http import HttpResponse
+from django.core.exceptions import ObjectDoesNotExist
 import uuid
 
 class Home(ListView):
@@ -10,14 +11,28 @@ class Home(ListView):
     template_name = 'catalog/home.html'
 
 def bookdetail(request,id):
+     categories = []
      book = Books.objects.get(pk=id)
-     return render(request, 'catalog/book.html', {'book':book})
+     category = book.book_category
+     other_books = Books.objects.exclude(id=id)
+     for books in other_books: 
+        if books.book_category == category:
+            categories.append(books)
+     
+     return render(request, 'catalog/book.html', {'book':book, 'categories': categories})
 
 def checkout(request, id):
     product = Books.objects.get(pk=id)
     if request.method == 'POST':
-        rental = request.POST.get('rental')
-    return render(request, 'catalog/checkout.htm', {'product':product, 'rental': rental})
+        rentalperiod = request.POST.get('rentalperiod')
+        deductible = int(product.book_advance) - (int(product.book_price) * int(rentalperiod)) 
+        request.session['rentalperiod'] = rentalperiod
+        request.session['deductible'] = deductible 
+    return render(request, 'catalog/checkout.htm', {'product':product, 'rentalperiod': rentalperiod, 'deductible': deductible})
+
+def rental(request, id):
+    product = Books.objects.get(pk=id)
+    return render(request, 'catalog/rental.html', {'product':product})
 
 def order(request, id):
     if request.method == 'POST':
@@ -29,9 +44,12 @@ def order(request, id):
        pincode = request.POST.get('pincode', False)
        city = request.POST.get('city', False)
        mobile = request.POST.get('mobile', False)
-       rental = request.POST.get('rental', False)
        order_reference = uuid.uuid1()
+       rentalperiod = request.session['rentalperiod']
+       deductible = request.session['deductible']
        data = {
+        'deductible': deductible,
+        'rentalperiod': rentalperiod,
         'reference_number': order_reference,
         'book_ordered': book_ordered,
         'name': name,
@@ -52,10 +70,25 @@ def order(request, id):
         customer_line1 = line1,
         customer_line2 = line2,
         order_number= order_reference,
-        rental = rental)
+        deductible=deductible,
+        rentalperiod= rentalperiod)
     else: 
         return HttpResponse('Please place an order first')
     return render(request, 'catalog/thanks.html', {'data': data})
 
+def search(request):
+    try:
+     if request.method == 'POST':
+        name = request.POST.get('search', False)
+        search_results = Books.objects.filter(book_name__search = name)
+     return render(request, 'catalog/search.html', {'search_results': search_results})
+    except:
+        return HttpResponse('Please use the search bar to search books')
+
+def categories(request):
+    if request.method == 'POST':
+        category = request.POST.get('categories')
+        search_category = Books.objects.filter(book_category=category)
+    return render(request, 'catalog/categories.html', {'search_category': search_category})
      
 

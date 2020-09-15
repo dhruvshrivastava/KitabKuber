@@ -1,0 +1,112 @@
+{% extends 'catalog/base.html' %}
+{% block content %}
+<center><h1 class = "title">Rental Details</h1></center>
+<br>
+<br>
+<div class = "container">
+<div class = "box">
+<div class = "columns">
+
+<div class = "column">
+
+
+<figure class = "image is-96x96">
+<img src = "/media/{{ product.book_image }}"/>
+</figure>
+<br><br>
+
+<p class = "is-size-5"> <strong> {{ product.book_name }} </strong> </p><br>
+
+<strong> Rent Breakdown:</strong>
+<hr>
+<b> Rent/Day:</B> {{ product.book_price }}
+<br>
+<strong> Total Payable: </strong>
+<br>
+<b>Security Deposit: </b>Rent/Day x 60 days (2 months advance) = {{ product.book_advance }}
+<br>
+<strong>Shipment Charges: </strong> 50/-
+<br>
+<strong>Collection Charges </strong> 50/-
+<br>
+<strong> Deductible: </strong>  Security Deposit - Total Rent [Rent/Day x Rental Period] 
+
+</div>
+<div class = "column">
+<h1 class = "title">Rental Policies:</h1>
+<hr class = "divider">
+<br>
+Once the rental is up and the book is successfully returned to KitabKuber.com, we will refund the deductible (2 months advance - Total Rent) 
+to your account immediately.
+<p>
+<br>
+<P> The book should be returned back to KitabKuber.com in the same condition as it was delivered. If any harm and damage is caused to the book, 
+KitabKuber.com has the right to not return the deductible amount. </P>
+<br>
+<p>As of now, we are only accepting Cash on Delivery as the payment mode</p>
+
+</div>
+</div>
+</div>
+<div class = "checkout-form">
+<form action = "checkout/" method = "post" id="rental">
+{% csrf_token %}
+<div class = "field is-horizontal is-centered">
+<div class = "field-body">
+<div class="field">
+  <label class="label">Rental Period (In Days)</label>
+  <div class="control">
+    <select class="input is-danger" name="rentalperiod">
+     <option>5</option> 
+     <option>10</option>
+     <option>15</option>
+     <option>20</option>
+     <option>25</option>
+     <option>30</option>
+     <option>35</option>
+     <option>40</option>
+     <option>45</option>
+     <option>50</option>
+     <option>55</option>
+     <option>60</option>
+    </select>
+    <p class="help is-danger">
+        This field is required
+      </p>
+  </div>
+</div>
+</div>
+</div>
+<br>
+<div class = "control">
+<button class = "button is-primary" type = "submit">Checkout
+</div>
+
+</form>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.3/es6-shim.min.js"></script>    
+<script src="/vendors/formvalidation/dist/js/FormValidation.min.js"></script>
+<script src="/vendors/formvalidation/dist/js/plugins/Bulma.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(e) {
+    FormValidation.formValidation(
+        document.getElementById('rental'),
+        {
+            fields: {
+                rentalperiod: {
+                    validators: {
+                        notEmpty: {
+                            message: "The field is required"
+                        }
+                    }
+                }
+            },
+            plugins: {
+                bulma: new FormValidation.plugins.Bulma(),
+                ...
+            },
+        }
+    );
+});
+</script>
+{% endblock %}

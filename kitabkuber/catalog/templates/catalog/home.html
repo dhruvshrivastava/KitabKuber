@@ -21,22 +21,53 @@
 </div>
 </div>
 <div class = "catalog">
-<center><p class = "is-size-1 is-centered">Catalog</p></center>
+<center><p class = "is-size-1 is-centered">Catalog</p>
+<div>
+<form action = "categories/" method='POST'>
+{% csrf_token %}
+<div class = "field is-horizontal is-centered">
+<div class = "field-body">
+<div class = "columns">
+<div class = "column is-6">
+<div class = "select is-large is-primary">
+<select name = "categories">
+<option>SAT I </option>
+<option> SAT II </option>
+<option> ACT </option>
+<option> IELTS </option>
+<option> TOEFL </option>
+<option> GRE </option>
+<option> GMAT </option>
+<option> IIT-JEE </option>
+
+</select>
+</div>
+
+</div>
+<div class = "column">
+<button class = "button is-primary is-large" type = "Submit">Search by Category
+</div>
+</div>
+</form>
+</div>
+</div></div>
+</center>
 <br>
 <br>
 <div class = "columns is-multiline">
 {% for product in object_list %}
 
-<div class = "column is-two-quarter">
+<div class = "column is-one-quarter">
 <div class = "box">
-<div class = "product">
+
 <figure class = "image is-128x128">
 <img src = "/media/{{ product.book_image }}" />
 </figure>
 <br><br><strong><a href = "book/{{ product.id }}">{{ product.book_name }}</a></strong>
-<br><p>Daily Rent: {{ product.book_price }} </p>
+<br><p><b>Category:</b> {{ product.book_category }}</p>
+<b><p>Daily Rent:</b> {{ product.book_price }} </p>
 </div>
-</div>
+
 </div>
 {% endfor %}
 

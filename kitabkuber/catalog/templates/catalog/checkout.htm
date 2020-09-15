@@ -16,7 +16,7 @@
 <br><br>
 
 <p class = "is-size-5"> <strong> {{ product.book_name }} </strong> </p><br>
-<strong> Rent Duration: </strong> {{ rental }} days <br>
+<strong> Rent Duration: </strong> {{ rentalperiod }} days <br>
 <strong> Rent Breakdown</strong>
 <hr>
 <b> Daily Rent:</B> {{ product.book_price }}
@@ -28,6 +28,8 @@
 <strong>Shipment Charges: </strong> 50/-
 <br>
 <strong>Collection Charges </strong> 50/-
+<br>
+<strong> Deductible: </strong> {{ deductible }}
 
 </div>
 <div class = "column">
@@ -47,19 +49,25 @@ KitabKuber.com has the right to not return the deductible amount. </P>
 </div>
 </div>
 <div class = "checkout-form">
-<form action = "order/" method = "post">
+<form action = "order/" method = "post" id = "checkout">
 {% csrf_token %}
 <div class = "field">
 <label class = "label"> Name</label>
 <div class = "control">
-<input class = "input" name = "name" type = "name" placeholder = "Enter Name">
+<input class = "input is-danger" name = "name" type = "name" placeholder = "Enter Name">
 </div>
+<p class="help is-danger">
+        This field is required
+      </p>
 </div>
 <div class="field">
   <label class="label">Mobile Number</label>
   <div class="control">
-    <input class="input" name="mobile" type="number" placeholder="Enter 10 Digit Mobile Number">
+    <input class="input is-danger" name="mobile" type="number" placeholder="Enter 10 Digit Mobile Number">
   </div>
+  <p class="help is-danger">
+        This field is required
+      </p>
 </div>
 <div class="field">
   <label class="label">Email</label>
@@ -78,39 +86,113 @@ KitabKuber.com has the right to not return the deductible amount. </P>
 <div class="field">
   <label class="label">Address Line #1</label>
   <div class="control">
-    <input class="input" name = "line1" type="Address Line #1" placeholder="Address Line #1">
+    <input class="input is-danger" name = "line1" type="Address Line #1" placeholder="Address Line #1">
   </div>
+  <p class="help is-danger">
+        This field is required
+      </p>
 </div>
 <div class="field">
   <label class="label">Address Line #2</label>
   <div class="control">
-    <input class="input" name = "line2" type="Address Line #1" placeholder="Address Line #2">
+    <input class="input is-danger" name = "line2" type="Address Line #1" placeholder="Address Line #2">
   </div>
+  <p class="help is-danger">
+        This field is required
+      </p>
 </div>
 <div class="field">
   <label class="label">City</label>
   <div class="control">
-    <input class="input" name = "city" type="City" placeholder="City">
+    <input class="input is-danger" name = "city" type="City" placeholder="City">
   </div>
+  <p class="help is-danger">
+        This field is required
+      </p>
 </div>
 <div class="field">
   <label class="label">Pincode</label>
   <div class="control">
-    <input class="input" name="pincode" type="number" placeholder="Pincode">
+    <input class="input is-danger" name="pincode" type="number" placeholder="Pincode">
   </div>
+  <p class="help is-danger">
+        This field is required
+      </p>
+
 </div>
-<fieldset disabled>
-<div class="field">
-  <label class="label">Rental Period</label>
-  <div class="control">
-    <input class="input disabled" name="rentalperiod" type="number" placeholder="{{ rental }}">
-  </div>
-</div>
-</fieldset>
+
 <br>
 <div class = "control">
 <button class = "button is-primary" type = "submit">Checkout
 </div>
 
 </form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.3/es6-shim.min.js"></script>    
+<script src="/vendors/formvalidation/dist/js/FormValidation.min.js"></script>
+<script src="/vendors/formvalidation/dist/js/plugins/Bulma.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(e) {
+    FormValidation.formValidation(
+        document.getElementById('checkout'),
+        {
+            fields: {
+                name: {
+                  validators: {
+                     notEmpty: {
+                      message: "This field is required"
+                    }
+                  }
+                },
+                email:{
+                  validators: {
+                     notEmpty: {
+                      message: "This field is required"
+                    }
+                },
+                mobile:{
+                  validators: {
+                    notEmpty: {
+                      message: "This field is required"
+                    }
+                },
+                line1:{
+                  validators: {
+                    notEmpty: {
+                      message: "This field is required"
+                    }
+                },
+                line2:{
+                  validators: {
+                    notEmpty: {
+                      message: "This field is required"
+                    }
+
+                },
+                city:{
+                  validators: {
+                    notEmpty: {
+                      message: "This field is required"
+                    }
+                },
+                pincode:{
+                  validators: {
+                    notEmpty: {
+                      message: "This field is required"
+                    }
+                },
+
+
+            }
+            plugins: {
+                trigger: new FormValidation.plugins.Trigger(),
+                bulma: new FormValidation.plugins.Bulma(),
+                submitButton: new FormValidation.plugins.SubmitButton()
+                
+            },
+        }
+    );
+});
+</script>
 {% endblock %}
