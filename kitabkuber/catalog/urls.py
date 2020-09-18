@@ -1,5 +1,5 @@
 from django.urls import path 
-from .views import Home, bookdetail, order, search, categories, rental, checkout
+from .views import Home, bookdetail, order, search, categories, rental, contact, checkout
 from django.conf.urls.static import static
 from django.conf import settings 
 
@@ -11,5 +11,6 @@ urlpatterns = [
     path('book/<int:id>/rental/checkout/', checkout, name = 'checkout'),
     path('book/<int:id>/rental/checkout/order/', order, name='order'),
     path('search/', search, name = 'search'),
-    path('categories/', categories, name='categories')
+    path('categories/', categories, name='categories'),
+    path('contact/', contact, name='contact')
 ]  

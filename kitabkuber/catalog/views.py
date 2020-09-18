@@ -5,6 +5,8 @@ from .forms import RentForm
 from django.http import HttpResponse
 from django.core.exceptions import ObjectDoesNotExist
 import uuid
+from django.core.mail import BadHeaderError
+from django.core import mail
 
 class Home(ListView):
     model = Books
@@ -92,3 +94,29 @@ def categories(request):
     return render(request, 'catalog/categories.html', {'search_category': search_category})
      
 
+def contact(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        mobile = request.POST.get('mobile')
+        message = request.POST.get('message')
+        if message and email:
+            try: 
+                connection = mail.get_connection()
+                connection.open()
+                email1 = mail.EmailMessage(
+                    'enquiry',
+                    message,
+                    email,
+                    ['dhruvsri5@gmail.com'],
+                    connection=connection
+                )
+                email1.send()
+                connection.close()
+            except BadHeaderError:
+                return HttpResponse("Invalid Header Found")
+            return HttpResponse('Your response has been recieved, we will contact you shortly')
+        else:
+            return HttpResponse('Make sure all fields are entered and are valid')
+
+    return render(request, 'catalog/contact.html')

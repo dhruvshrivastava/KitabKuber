@@ -1,0 +1,47 @@
+{% extends "catalog/base.html" %}
+
+
+{% block content %}
+<center>
+<div>
+<h1 class = "title"> Contact Us </h1>
+<br>
+<h2 class = "subtitle"> Fill the form below or call us at <b> +91 9599541241</b> </h2>
+<br>
+</center>
+<div class = "box">
+<div class = "form">
+<form action = "/contact/" method = 'POST'>
+{% csrf_token %}
+<div class = "field">
+<label class = "label"> Name </label>
+<div class = "control">
+<input class = "input" type = "text" placeholder = "Your Name" name = "name">
+</div>
+</div>
+<div class = "field">
+<label class = "label">Mobile Number</label> 
+<input class = "input" type = "number" placeholder = "10 Digit Mobile Number"
+ name = "mobile">
+ </div>
+ <div class = "field">
+ <label class = "label"> Email Address </label>
+ <input class = "input" type = "email" placeholder = "Your Email" name = "email">
+ </div>
+<div class="field">
+  <label class="label">Message</label>
+  <div class="control">
+    <textarea class="textarea" name = "message" placeholder="Textarea"></textarea>
+  </div>
+</div>
+
+ <div class = "control">
+<button class = "button is-primary" type = "Submit"> Submit
+
+ </div>
+</form>
+</div>
+</div>
+
+
+{% endblock %} 
