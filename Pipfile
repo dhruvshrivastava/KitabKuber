@@ -6,6 +6,9 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
+django = "*"
+pillow = "*"
+django-contactform = "*"
 
 [requires]
 python_version = "3.7"
