@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import dj_database_url
-import cloudinary_storage
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -33,12 +33,10 @@ CLOUDINARY_STORAGE = {
     'API_KEY': '954882533917629',
     'API_SECRET': 'QBfs7JAOrjTHFUcTcqdTFF_2Yn0',
 }
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Application definition
 
 INSTALLED_APPS = [
-    'cloudinary_storage',
     'cloudinary',
     'catalog',
     'django.contrib.admin',
