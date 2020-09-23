@@ -27,10 +27,18 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'kitabkuber.herokuapp.com']
 
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'hephdb6iy',
+    'API_KEY': '954882533917629',
+    'API_SECRET': 'QBfs7JAOrjTHFUcTcqdTFF_2Yn0',
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Application definition
 
 INSTALLED_APPS = [
+    'cloudinary_storage',
+    'cloudinary'
     'catalog',
     'django.contrib.admin',
     'django.contrib.auth',
