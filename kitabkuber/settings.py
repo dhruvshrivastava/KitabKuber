@@ -149,3 +149,4 @@ STATIC_ROOT = 'static/'
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media') 
 MEDIA_URL = '/media/'
 
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
