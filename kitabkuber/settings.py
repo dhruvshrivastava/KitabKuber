@@ -31,17 +31,10 @@ ALLOWED_HOSTS = ['127.0.0.1',
 'kitabkuber.com',
 'www.kitabkuber.com']
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'hephdb6iy',
-    'API_KEY': '954882533917629',
-    'API_SECRET': 'QBfs7JAOrjTHFUcTcqdTFF_2Yn0',
-}
 
 # Application definition
 
 INSTALLED_APPS = [
-    'cloudinary',
-    'catalog',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
