@@ -1,7 +1,6 @@
 from django.db import models
 import cloudinary
 
-
 class Books(models.Model):
     book_name = models.CharField(max_length=1000)
     book_description = models.CharField(max_length=5000)
