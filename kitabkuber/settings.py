@@ -35,6 +35,7 @@ ALLOWED_HOSTS = ['127.0.0.1',
 # Application definition
 
 INSTALLED_APPS = [
+    'storages',
     'catalog',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -150,3 +151,7 @@ MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_STORAGE_BUCKET_NAME = 'kitabkuber'
+AWS_S3_REGION_NAME = 'ap-south-1'
