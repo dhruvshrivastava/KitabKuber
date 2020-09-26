@@ -126,7 +126,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+# Context Processor 
+context_processors = [
+    
+    'django.template.context_processors.media', 
+]
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
