@@ -4,7 +4,7 @@ from django.db import models
 class Books(models.Model):
     book_name = models.CharField(max_length=1000)
     book_description = models.CharField(max_length=5000)
-    book_image = models.ImageField(upload_to='https://kitabkuber.s3.ap-south-1.amazonaws.com/uploads/', blank=True)
+    book_image = models.ImageField(upload_to='uploads/', blank=True)
     book_price = models.FloatField()
     book_category = models.CharField(max_length=500)
     book_advance = models.FloatField(default=0)
