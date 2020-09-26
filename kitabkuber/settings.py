@@ -126,11 +126,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Context Processor 
-context_processors = [
-    
-    'django.template.context_processors.media', 
-]
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -151,8 +147,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = 'static/'
 
-MEDIA_ROOT =  os.path.join(BASE_DIR, 'media') 
-MEDIA_URL = 'https://kitabkuber.s3.ap-south-1.amazonaws.com'
+
 
 DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 

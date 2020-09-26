@@ -11,7 +11,7 @@
 
 
 <figure class = "image is-96x96">
-<img src = "/{{ product.book_image }}"/>
+<img src = "{{ product.book_image }}"/>
 </figure>
 <br><br>
 
@@ -128,71 +128,5 @@ KitabKuber.com has the right to not return the deductible amount. </P>
 
 </form>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.3/es6-shim.min.js"></script>    
-<script src="/vendors/formvalidation/dist/js/FormValidation.min.js"></script>
-<script src="/vendors/formvalidation/dist/js/plugins/Bulma.min.js"></script>
 
-<script>
-document.addEventListener('DOMContentLoaded', function(e) {
-    FormValidation.formValidation(
-        document.getElementById('checkout'),
-        {
-            fields: {
-                name: {
-                  validators: {
-                     notEmpty: {
-                      message: "This field is required"
-                    }
-                  }
-                },
-                email:{
-                  validators: {
-                     notEmpty: {
-                      message: "This field is required"
-                    }
-                },
-                mobile:{
-                  validators: {
-                    notEmpty: {
-                      message: "This field is required"
-                    }
-                },
-                line1:{
-                  validators: {
-                    notEmpty: {
-                      message: "This field is required"
-                    }
-                },
-                line2:{
-                  validators: {
-                    notEmpty: {
-                      message: "This field is required"
-                    }
-
-                },
-                city:{
-                  validators: {
-                    notEmpty: {
-                      message: "This field is required"
-                    }
-                },
-                pincode:{
-                  validators: {
-                    notEmpty: {
-                      message: "This field is required"
-                    }
-                },
-
-
-            }
-            plugins: {
-                trigger: new FormValidation.plugins.Trigger(),
-                bulma: new FormValidation.plugins.Bulma(),
-                submitButton: new FormValidation.plugins.SubmitButton()
-                
-            },
-        }
-    );
-});
-</script>
 {% endblock %}
