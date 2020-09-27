@@ -7,13 +7,13 @@
 <hr class = "divider">
 <br>
 <strong> Book Ordered: </strong>{{ data.book_ordered }}<br>
-<strong> Order Referene Number</strong> {{ data.reference_number }}</br>
+<strong> Order Reference Number</strong> {{ data.reference_number }}</br>
 <strong>Name:</strong> {{ data.name }}<br>
 <strong> Address:</strong> {{ data.address_line_1 }} <br> {{ data.address_line_2 }}<br>
 <strong>E-mail Address:</strong> {{ data.email }}<br>
 <strong>Mobile Number</strong> {{ data.mobile }}<br>
-<strong> Rental Period:</strong> {{ data.rentalperiod }}<br>
-<strong> Deductible:</strong> {{ data.deductible }}
+<strong> Rental Period:</strong> {{ data.rentalperiod }} days<br>
+<strong> Deductible:</strong> Rs.{{ data.deductible }}
 </div>
 </center>
 {% endblock %}

@@ -47,8 +47,10 @@
       <h1 class="title"><a href = "/book/{{ product.id }}">{{ product.book_name }}</a> </h1>
       <h2 class="subtitle">
         {{ product.book_description }}
+        <br><b>
         <br> Category: {{ product.book_category}}
-        <br> Rent/Day: {{ product.book_price }}
+        <br> Rent/Day: Rs.{{ product.book_price }}
+        </b>
       </h2>
       </div>
     </div>
