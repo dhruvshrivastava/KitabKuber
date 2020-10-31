@@ -140,6 +140,6 @@ def sell(request):
         )
         if (sell_enquiry):
          messages.info(request, 'Your enquiry has been generated successfully! We will contact you shortly')
-         return HttpResponseRedirect(request, 'catalog/sell.html')
+         return HttpResponseRedirect('catalog/sell.html')
 
     return render(request, 'catalog/sell.html')
