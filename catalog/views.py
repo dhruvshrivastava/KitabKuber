@@ -120,3 +120,6 @@ def contact(request):
             return HttpResponse('Make sure all fields are entered and are valid')
 
     return render(request, 'catalog/contact.html')
+
+def sell(request):
+    return render(request, 'catalog/sell.html')
