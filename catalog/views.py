@@ -2,13 +2,13 @@ from django.shortcuts import render
 from django.views.generic import ListView
 from catalog.models import Books, Orders, Sell
 from .forms import RentForm
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.core.exceptions import ObjectDoesNotExist
 import uuid
 from django.core.mail import BadHeaderError
 from django.core import mail
 from django.contrib import messages
-from django.http import HttpResponeRedirect
+
 
 class Home(ListView):
     model = Books
