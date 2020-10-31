@@ -1,13 +1,79 @@
 {% extends 'catalog/base.html' %}
 
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
 {% block content %}
 
 <div id = "content">
-<center><h1> Sell your used books to us </h1> 
+<center><h1 class = "heading"> Sell your used books to us </h1> 
 <br>
 <h2 class = "subtitle"> And we'll make sure they are put to good use </h2>
 <center>
+<div class = "box">
+<div class = "form">
 
+<form action = "/sell/" method = "POST" enctype="multipart/form-data">
+
+{% csrf_token %}
+<div class = "field">
+<label class = "label"> Name </label>
+<div class = "control">
+<input class = "input" type = "text" placeholder = "Your Name" name = "name">
+</div>
+</div>
+<div class = "field">
+<label class = "label">Mobile Number</label> 
+<input class = "input" type = "number" placeholder = "10 Digit Mobile Number"
+ name = "mobile">
+ </div>
+ <div class = "field">
+ <label class = "label"> Email Address </label>
+ <input class = "input" type = "email" placeholder = "Your Email" name = "email">
+ </div>
+<div class="field">
+  <label class="label">Book Name </label>
+  <div class="control">
+    <textarea class="input" name = "bookname" placeholder="Enter Book Name"></textarea>
+  </div>
+</div>
+<div class="field">
+  <label class="label">Book Publisher</label>
+  <div class="control">
+    <textarea class="input" name = "bookpublisher" placeholder="Enter Book Publisher"></textarea>
+  </div>
+</div>
+<div class="file">
+  <label class="file-label">
+    <input class="file-input" type="file" name="file">
+    <span class="file-cta">
+      <span class="file-icon">
+        <i class="fas fa-upload"></i>
+      </span>
+      <span class="file-label">
+        Attach Book Photo
+      </span>
+    </span>
+  </label>
+</div>
+
+ <div class = "control">
+<button class = "button is-primary" type = "Submit"> Submit
+
+ </div>
+
+
+
+
+
+
+</div>
+</div>
 
 
 

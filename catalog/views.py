@@ -1,12 +1,13 @@
 from django.shortcuts import render
 from django.views.generic import ListView
-from catalog.models import Books, Orders
+from catalog.models import Books, Orders, Sell
 from .forms import RentForm
 from django.http import HttpResponse
 from django.core.exceptions import ObjectDoesNotExist
 import uuid
 from django.core.mail import BadHeaderError
 from django.core import mail
+from django.contrib import messages
 
 class Home(ListView):
     model = Books
@@ -122,4 +123,22 @@ def contact(request):
     return render(request, 'catalog/contact.html')
 
 def sell(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        mobile = request.POST.get('mobile')
+        bookname = request.POST.get('bookname')
+        bookpublisher = request.POST.get('bookpublisher')
+        book_image = request.FILES['file']
+        sell_enquiry = Sell.objects.create(name = name,
+        email = email,
+        mobile = mobile,
+        bookname = bookname,
+        bookpublisher = bookpublisher,
+        book_image = book_image
+        )
+        if (sell_enquiry):
+         messages.info(request, 'Your enquiry has been generated successfully! We will contact you shortly')
+
+
     return render(request, 'catalog/sell.html')

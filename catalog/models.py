@@ -27,3 +27,14 @@ class Orders(models.Model):
     customer_pincode = models.CharField(max_length=1000)
     def __str__(self):
         return self.order_number
+
+class Sell(models.Model):
+    name = models.CharField(max_length=1000, default=0)
+    email = models.CharField(max_length=1000, default=0)
+    mobile = models.CharField(max_length=1000, default=0)
+    bookname = models.CharField(max_length=1000, default=0)
+    bookpublisher = models.CharField(max_length=1000, default=0)
+    book_image = models.ImageField(upload_to='uploads/', blank=True)
+    def __str__(self):
+        return self.bookname
+   
