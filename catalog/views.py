@@ -2,12 +2,12 @@ from django.shortcuts import render
 from django.views.generic import ListView
 from catalog.models import Books, Orders, Sell
 from .forms import RentForm
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse
 from django.core.exceptions import ObjectDoesNotExist
 import uuid
 from django.core.mail import BadHeaderError
 from django.core import mail
-from django.contrib import messages
+
 
 
 class Home(ListView):
@@ -139,7 +139,6 @@ def sell(request):
         book_image = book_image
         )
         if (sell_enquiry):
-         messages.info(request, 'Your enquiry has been generated successfully! We will contact you shortly')
-         return HttpResponseRedirect('sell')
+         return HttpResponse('Your enquiry has been generated successfully! We will contact you shortly')
 
     return render(request, 'catalog/sell.html')
