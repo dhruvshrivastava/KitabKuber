@@ -149,7 +149,6 @@ STATIC_ROOT = 'static/'
 
 
 
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_STORAGE_BUCKET_NAME = 'kitabkuber'
