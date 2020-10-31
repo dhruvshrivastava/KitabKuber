@@ -8,6 +8,7 @@ import uuid
 from django.core.mail import BadHeaderError
 from django.core import mail
 from django.contrib import messages
+from django.http import HttpRedirect
 
 class Home(ListView):
     model = Books
@@ -139,6 +140,6 @@ def sell(request):
         )
         if (sell_enquiry):
          messages.info(request, 'Your enquiry has been generated successfully! We will contact you shortly')
-
+         return HttpRedirect(request, 'catalog/sell.html')
 
     return render(request, 'catalog/sell.html')
