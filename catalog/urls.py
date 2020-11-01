@@ -1,5 +1,5 @@
 from django.urls import path 
-from .views import Home, bookdetail, sell, order, search, categories, rental, contact, checkout
+from .views import Home, bookdetail, sell, order, search, categories, rental, contact, checkout, faq
 from django.conf.urls.static import static
 from django.conf import settings 
 
