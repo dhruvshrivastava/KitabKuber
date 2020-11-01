@@ -13,5 +13,7 @@ urlpatterns = [
     path('search/', search, name = 'search'),
     path('categories/', categories, name='categories'),
     path('contact/', contact, name='contact'),
-    path('sell/', sell, name = 'sell')
+    path('sell/', sell, name = 'sell'),
+    path('faq/', faq, name = 'faq'),
+
 ]  

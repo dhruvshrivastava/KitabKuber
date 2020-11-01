@@ -142,3 +142,6 @@ def sell(request):
          return HttpResponse('Your enquiry has been generated successfully! We will contact you shortly')
 
     return render(request, 'catalog/sell.html')
+
+def faq(request):
+    return render(request, 'catalog/faq.html')
