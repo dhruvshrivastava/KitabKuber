@@ -16,27 +16,24 @@
 <br><br>
 
 <p class = "is-size-5"> <strong> {{ product.book_name }} </strong> </p><br>
-<strong> Rent Duration: </strong> {{ rentalperiod }} days <br>
-<strong> Rent Breakdown</strong>
-<hr>
-<b> Daily Rent:</B> Rs.{{ product.book_price }}
-<br>
+
 <strong> Total Payable: </strong>
+<hr>
+<b> MRP:</B> Rs.{{ product.book_price }}
 <br>
-<b> Daily Rent x 60 days (2 months advance)</b> = {{ product.book_advance }}
+
+<strong>Shipment Charges: </strong> 200/-
 <br>
-<strong>Shipment Charges: </strong> 50/-
+<strong>Collection Charges </strong> 200/-
 <br>
-<strong>Collection Charges </strong> 50/-
-<br>
-<strong> Deductible: </strong> {{ deductible }}
+<strong> Refundable: </strong> {{ product.book_price }}
 
 </div>
 <div class = "column">
 <h1 class = "title">Rental Policies:</h1>
 <hr class = "divider">
 <br>
-Once the rental is up and the book is successfully returned to KitabKuber.com, we will refund the deductible (2 months advance - Total Rent) 
+Once the rental is up and the book is successfully returned to KitabKuber.com, we will refund the cost of the book
 to your account via your preferred payment method imtely.
 <p>
 <br>

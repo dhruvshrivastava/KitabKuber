@@ -17,26 +17,24 @@
 
 <p class = "is-size-5"> <strong> {{ product.book_name }} </strong> </p><br>
 
-<strong> Rent Breakdown:</strong>
+
+
+<strong> Total Payable: </strong><br>
 <hr>
-<b> Rent/Day:</B> Rs.{{ product.book_price }}
+<b> MRP:</B> Rs.{{ product.book_price }}
 <br>
-<strong> Total Payable: </strong>
+<strong>Shipment Charges: </strong> 200/-
 <br>
-<b>Security Deposit: </b>Rent/Day x 60 days (2 months advance) = {{ product.book_advance }}
+<strong>Collection Charges </strong> 200/-
 <br>
-<strong>Shipment Charges: </strong> 50/-
-<br>
-<strong>Collection Charges </strong> 50/-
-<br>
-<strong> Deductible: </strong>  Security Deposit - Total Rent [Rent/Day x Rental Period] 
+<strong> Deductible: </strong>  Rs.{{ product.book_price }}
 
 </div>
 <div class = "column">
 <h1 class = "title">Rental Policies:</h1>
 <hr class = "divider">
 <br>
-Once the rental is up and the book is successfully returned to KitabKuber.com, we will refund the deductible (2 months advance - Total Rent) 
+Once the rental is up and the book is successfully returned to KitabKuber.com, we will refund the cost of the book 
 to your account via your preferred payment method immediately.
 <p>
 <br>
@@ -54,21 +52,21 @@ KitabKuber.com has the right to not return the deductible amount. </P>
 <div class = "field is-horizontal is-centered">
 <div class = "field-body">
 <div class="field">
-  <label class="label">Rental Period (In Days)</label>
+  <label class="label">How long do you intend on keeping the book?</label>
   <div class="control">
     <select class="input is-danger" name="rentalperiod">
-     <option>5</option> 
-     <option>10</option>
-     <option>15</option>
-     <option>20</option>
-     <option>25</option>
-     <option>30</option>
-     <option>35</option>
-     <option>40</option>
-     <option>45</option>
-     <option>50</option>
-     <option>55</option>
-     <option>60</option>
+     <option>1 Months</option> 
+     <option>2 Months</option>
+     <option>3 Months</option>
+     <option>4 Months</option>
+     <option>5 Months</option>
+     <option>6 Months</option>
+     <option>7 Months</option>
+     <option>8 Months</option>
+     <option>9 Months</option>
+     <option>10 Months</option>
+     <option>11 Months</option>
+     <option>12 Months</option>
     </select>
     <p class="help is-danger">
         This field is required
@@ -83,30 +81,5 @@ KitabKuber.com has the right to not return the deductible amount. </P>
 </div>
 
 </form>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.3/es6-shim.min.js"></script>    
-<script src="/vendors/formvalidation/dist/js/FormValidation.min.js"></script>
-<script src="/vendors/formvalidation/dist/js/plugins/Bulma.min.js"></script>
 
-<script>
-document.addEventListener('DOMContentLoaded', function(e) {
-    FormValidation.formValidation(
-        document.getElementById('rental'),
-        {
-            fields: {
-                rentalperiod: {
-                    validators: {
-                        notEmpty: {
-                            message: "The field is required"
-                        }
-                    }
-                }
-            },
-            plugins: {
-                bulma: new FormValidation.plugins.Bulma(),
-                ...
-            },
-        }
-    );
-});
-</script>
 {% endblock %}

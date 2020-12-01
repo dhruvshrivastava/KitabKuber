@@ -29,10 +29,8 @@ def checkout(request, id):
     product = Books.objects.get(pk=id)
     if request.method == 'POST':
         rentalperiod = request.POST.get('rentalperiod')
-        deductible = int(product.book_advance) - (int(product.book_price) * int(rentalperiod)) 
         request.session['rentalperiod'] = rentalperiod
-        request.session['deductible'] = deductible 
-    return render(request, 'catalog/checkout.htm', {'product':product, 'rentalperiod': rentalperiod, 'deductible': deductible})
+    return render(request, 'catalog/checkout.htm', {'product':product, 'rentalperiod': rentalperiod})
 
 def rental(request, id):
     product = Books.objects.get(pk=id)
@@ -50,9 +48,9 @@ def order(request, id):
        mobile = request.POST.get('mobile', False)
        order_reference = uuid.uuid1()
        rentalperiod = request.session['rentalperiod']
-       deductible = request.session['deductible']
+       
        data = {
-        'deductible': deductible,
+        'deductible': '0',
         'rentalperiod': rentalperiod,
         'reference_number': order_reference,
         'book_ordered': book_ordered,
@@ -74,8 +72,8 @@ def order(request, id):
         customer_line1 = line1,
         customer_line2 = line2,
         order_number= order_reference,
-        deductible=deductible,
-        rentalperiod= rentalperiod)
+        rentalperiod= rentalperiod,
+        deductible='0')
     else: 
         return HttpResponse('Please place an order first')
     return render(request, 'catalog/thanks.html', {'data': data})
