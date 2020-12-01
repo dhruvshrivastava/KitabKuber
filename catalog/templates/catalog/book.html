@@ -17,16 +17,9 @@
 <br>
 <p class = "is-size-5"><b>Daily Rent:</b> Rs.{{ book.book_price }}</p>
 <hr class = "divider">
-<strong>Rent Breakdown:</strong>
-<br>
-<p>Total Rent: Rental period (in days) x Daily Rent</p>
-</p> Payable at the time of purchase: 2 months advance </p>
-<p> Deductible: Payable - Total Rent</p>
-<br>
-<strong> Shipping charges additional (Rs.50/book) <strong><br>
-<strong> The deductible amount will be refunded to you once the rent duration is
-up and the book is returned back to us in proper condition. The 2 months advance acts 
-as a security deposit to ensure that our books are in proper condition. </strong>
+
+<strong> Shipping charges additional (Rs.200/book) <strong><br>
+
 <br>
 <br>
 <div class = "box">
@@ -58,7 +51,7 @@ Other  {{ book.book_category }} books
 <img src = "https://kitabkuber.s3.ap-south-1.amazonaws.com/{{ category.book_image }}" />
 </figure>
 <br><br><strong><a href = "/book/{{ category.id }}">{{ category.book_name }}</a></strong>
-<br><p>Daily Rent: Rs.{{ category.book_price }} </p>
+<br><p>MRP: Rs.{{ category.book_price }} </p>
 </div>
 </div>
 </div>
