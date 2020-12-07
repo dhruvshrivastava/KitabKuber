@@ -17,8 +17,15 @@
 <br>
 <p class = "is-size-5"><b>MRP:</b> Rs.{{ book.book_price }}</p>
 <hr class = "divider">
-
+<div class = "shipping_charges">
+{% if book.book_price >= 1000 %}
 <strong> Shipping charges additional (Rs.250/book) <strong><br>
+{% endif %}
+{% if book.book_price < 1000 %}
+<strong> Shipping charges additional (Rs.150/book) <strong><br>
+{% endif %}
+
+</div>
 
 <br>
 <br>

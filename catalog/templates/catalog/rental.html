@@ -23,11 +23,20 @@
 <hr>
 <b> MRP:</B> Rs.{{ product.book_price }}
 <br>
+<div id = "delivery_charges">
+{% if product.book_price >= 1000 %}
 <strong>Shipment Charges: </strong> 250/-
 <br>
 <strong>Collection Charges </strong> 250/-
+{% endif %}
+{% if product.book_price < 1000 %}
+<strong>Shipment Charges: </strong> 150/-
 <br>
-<strong> Deductible: </strong>  Rs.{{ product.book_price }}
+<strong>Collection Charges </strong> 150/-
+{% endif %}
+</div>
+<br>
+<strong> Refundable: </strong>  Rs.{{ product.book_price }}
 
 </div>
 <div class = "column">
