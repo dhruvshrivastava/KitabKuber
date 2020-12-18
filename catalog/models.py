@@ -37,4 +37,9 @@ class Sell(models.Model):
     book_image = models.ImageField(upload_to='uploads/', blank=True)
     def __str__(self):
         return self.bookname
-   
+
+class Enquiry(models.Model):
+    book_name = models.CharField(max_length=1000, default=0)
+    book_author = models.CharField(max_length=1000, default=0)
+    def __str__(self):
+        return self.book_name

@@ -1,5 +1,5 @@
 from django.urls import path 
-from .views import Home, bookdetail, sell, order, search, categories, rental, contact, checkout, faq
+from .views import Home, bookdetail, sell, order, search, categories, rental, contact, checkout, faq, enquiry
 from django.conf.urls.static import static
 from django.conf import settings 
 
@@ -15,5 +15,6 @@ urlpatterns = [
     path('contact/', contact, name='contact'),
     path('sell/', sell, name = 'sell'),
     path('faq/', faq, name = 'faq'),
+    path('enquiry/', enquiry, name='enquiry')
 
 ]  

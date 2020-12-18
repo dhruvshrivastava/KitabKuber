@@ -34,7 +34,9 @@
 </form>
 </div>
 </div></div>
+{% if search_results %}
 {% for product in search_results %}
+
   <section class="section">
     <div class="container">
       <div class = "columns">
@@ -56,7 +58,36 @@
     </div>
     </div>
   </section>
-  {% endfor %}
+
+
+
+{% endfor %}
+{% else %}
+<div class = "enquiry-form">
+<center> <h1 class = "title"> Looks like our inventory needs an upgrade! </h1> 
+<br> <h2 class = "subtitle"> Can't find your book? Fill in the form below and we'll arrange the book for you right away</h2></center>
+<div class = "form">
+<form action = "/enquiry/" method = 'POST'>
+{% csrf_token %}
+<div class = "field">
+<label class = "label"> Book Name </label>
+<div class = "control">
+<input class = "input" type = "text" placeholder = "Your Name" name = "name">
+</div>
+</div>
+<div class = "field">
+<label class = "label"> Author/Publisher </label>
+<div class = "control">
+<input class = "input" type = "text" placeholder = "Your Name" name = "author">
+</div>
+</div>
+ <div class = "control">
+<button class = "button is-primary" type = "Submit"> Submit
+
+ </div>
+</form>
+</div>
+{% endif %}
 </body>
 
 </div>

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView
-from catalog.models import Books, Orders, Sell
+from catalog.models import Books, Orders, Sell, Enquiry
 from .forms import RentForm
 from django.http import HttpResponse
 from django.core.exceptions import ObjectDoesNotExist
@@ -85,7 +85,7 @@ def search(request):
         search_results = Books.objects.filter(book_name__search = name)
      return render(request, 'catalog/search.html', {'search_results': search_results})
     except:
-        return HttpResponse('Please use the search bar to search books')
+        return render(request, 'catalog/home.html')
 
 def categories(request):
     if request.method == 'POST':
@@ -143,3 +143,13 @@ def sell(request):
 
 def faq(request):
     return render(request, 'catalog/faq.html')
+
+def enquiry(request):
+  try: 
+      if request.method == 'POST':
+          book_name = request.POST.get('name')
+          book_author = request.POST.get('author')
+          enquiry_instance = Enquiry.objects.create(book_name=book_name, book_author=book_author)
+          return HttpResponse("Thank you for filling the form! We will get back to you with more details in 24 hours.")
+  except:
+      return render(request, 'catalog/home.html')
