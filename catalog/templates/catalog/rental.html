@@ -18,11 +18,11 @@
 <p class = "is-size-5"> <strong> {{ product.book_name }} </strong> </p><br>
 
 
-
-<strong> Total Payable: </strong><br>
-<hr>
 <b> MRP:</B> Rs.{{ product.book_price }}
 <br>
+<strong> Total Payable: </strong><br>
+<hr>
+
 <div id = "delivery_charges">
 {% if product.book_price >= 1000 %}
 <strong>Shipment Charges: </strong> 250/-
@@ -36,7 +36,7 @@
 {% endif %}
 </div>
 <br>
-<strong> Refundable: </strong>  Rs.{{ product.book_price }}
+
 
 </div>
 <div class = "column">
