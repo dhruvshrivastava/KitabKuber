@@ -39,6 +39,9 @@ class Sell(models.Model):
         return self.bookname
 
 class Enquiry(models.Model):
+    name = models.CharField(max_length=1000, default=0)
+    mobile = models.CharField(max_length=1000, default=0)
+    email = models.CharField(max_length=1000, default=0)
     book_name = models.CharField(max_length=1000, default=0)
     book_author = models.CharField(max_length=1000, default=0)
     def __str__(self):

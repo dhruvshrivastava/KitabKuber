@@ -70,15 +70,33 @@
 <form action = "/enquiry/" method = 'POST'>
 {% csrf_token %}
 <div class = "field">
-<label class = "label"> Book Name </label>
+<label class = "label"> Your Name </label>
 <div class = "control">
 <input class = "input" type = "text" placeholder = "Your Name" name = "name">
 </div>
 </div>
 <div class = "field">
+<label class = "label"> Email Address </label>
+<div class = "control">
+<input class = "input" type = "email" placeholder = "Email Address" name = "email">
+</div>
+</div>
+<div class = "field">
+<label class = "label"> Contact Number </label>
+<div class = "control">
+<input class = "input" type = "number" placeholder = "Contact Number" name = "mobile">
+</div>
+</div>
+<div class = "field">
+<label class = "label"> Book Name </label>
+<div class = "control">
+<input class = "input" type = "text" placeholder = "Book Name" name = "book_name">
+</div>
+</div>
+<div class = "field">
 <label class = "label"> Author/Publisher </label>
 <div class = "control">
-<input class = "input" type = "text" placeholder = "Your Name" name = "author">
+<input class = "input" type = "text" placeholder = "Author/Publisher" name = "author">
 </div>
 </div>
  <div class = "control">

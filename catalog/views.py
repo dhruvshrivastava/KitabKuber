@@ -147,9 +147,12 @@ def faq(request):
 def enquiry(request):
   try: 
       if request.method == 'POST':
-          book_name = request.POST.get('name')
+          name = request.POST.get('name')
+          mobile = request.POST.get('mobile')
+          email = request.POST.get('email')
+          book_name = request.POST.get('book_name')
           book_author = request.POST.get('author')
-          enquiry_instance = Enquiry.objects.create(book_name=book_name, book_author=book_author)
+          enquiry_instance = Enquiry.objects.create(book_name=book_name, book_author=book_author, name=name, email=email, mobile=mobile)
           return HttpResponse("Thank you for filling the form! We will get back to you with more details in 24 hours.")
   except:
       return render(request, 'catalog/home.html')
