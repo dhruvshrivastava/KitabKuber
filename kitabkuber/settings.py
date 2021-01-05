@@ -106,8 +106,7 @@ DATABASES = {
 
 }
 
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
-DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql'
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -156,4 +155,7 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_STORAGE_BUCKET_NAME = 'kitabkuber'
 AWS_S3_REGION_NAME = 'ap-south-1'
 
-SECURE_SSL_REDIRECT = False
+SECURE_SSL_REDIRECT = True
+
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql'
